@@ -1,0 +1,5 @@
+.hero-wrap{grid-template-columns:1.02fr .98fr;gap:clamp(48px,6vw,84px)}
+.hero-copy h1{font-size:clamp(42px,3.2vw,48px)}
+@media(max-width:1000px){.hero-copy h1{font-size:clamp(40px,4.3vw,50px)}}
+@media(max-width:850px){.hero-wrap{grid-template-columns:1fr;gap:40px}.lifecycle-card{max-width:700px}}
+@media(max-width:700px){.hero-wrap{gap:45px}.hero-copy h1{font-size:clamp(42px,11vw,57px)}}
