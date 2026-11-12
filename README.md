@@ -1,4 +1,4 @@
-# SPREAD GLOBAL
+# spread-global
 
 A responsive corporate website for SPREAD GLOBAL, presenting its end-to-end technology career lifecycle through an interactive S.P.R.E.A.D. journey, candidate lifecycle tracker, service engines, mentor network, founder profiles, and a four-step strategy call intake for contact details, role/status, resume, and pre-call notes.
 
