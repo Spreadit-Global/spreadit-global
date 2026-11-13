@@ -32,6 +32,6 @@ The API accepts PDF/DOC/DOCX resumes up to 10 MB, applies per-IP rate limiting, 
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/deploy-pages.yml` builds and deploys the site whenever changes are pushed to `main`. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The production build uses `/spread-global/` as its base path so JavaScript, CSS, and image assets load from the project Pages URL.
+The workflow in `.github/workflows/deploy-pages.yml` builds and deploys the site whenever changes are pushed to `main`. The project Pages URL is `https://spreadit-global.github.io/Spreadit-Global/`. In repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The production build uses `/Spreadit-Global/` as its base path so JavaScript, CSS, and image assets load from the project Pages URL.
 
 GitHub Pages is static hosting and does not run the Express API. The candidate intake therefore cannot save to `src/data/candidates.xlsx` or `src/resumes/` on Pages; it displays a contact fallback instead of claiming the submission was saved. Use a host that runs the Express server with persistent storage to enable resume and workbook submissions.

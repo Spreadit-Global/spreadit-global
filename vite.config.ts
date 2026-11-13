@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS === 'true' ? '/spread-global/' : '/',
+  base: process.env.GITHUB_ACTIONS === 'true' ? '/Spreadit-Global/' : '/',
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
