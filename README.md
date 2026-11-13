@@ -29,3 +29,9 @@ Resume names use `name-location-role.ext`; for example, `alex-candidate-dallas-t
 Candidate data and resumes are excluded from Git by `.gitignore`. Keep the local folders backed up securely and restrict access because they contain personal information. Local filesystem storage is suitable only when the server runs on persistent storage; ephemeral hosting may delete these files when an instance is replaced. Calendly opens after a successful save and receives the supported `name` and `email` URL parameters.
 
 The API accepts PDF/DOC/DOCX resumes up to 10 MB, applies per-IP rate limiting, sanitizes filenames, serializes workbook writes, and removes a saved resume if its workbook row cannot be written.
+
+## GitHub Pages
+
+The workflow in `.github/workflows/deploy-pages.yml` builds and deploys the site whenever changes are pushed to `main`. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The production build uses `/spread-global/` as its base path so JavaScript, CSS, and image assets load from the project Pages URL.
+
+GitHub Pages is static hosting and does not run the Express API. The candidate intake therefore cannot save to `src/data/candidates.xlsx` or `src/resumes/` on Pages; it displays a contact fallback instead of claiming the submission was saved. Use a host that runs the Express server with persistent storage to enable resume and workbook submissions.

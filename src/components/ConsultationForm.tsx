@@ -72,11 +72,18 @@ export function ConsultationForm({ modal = false, onClose }: Props) {
     formData.set('resume', resume)
     try {
       const response = await fetch('/api/intake', { method: 'POST', body: formData })
-      const result = await response.json() as { error?: string }
-      if (!response.ok) throw new Error(result.error || 'We could not save your details. Please try again.')
+      const contentType = response.headers.get('content-type') ?? ''
+      const result = contentType.includes('application/json')
+        ? await response.json() as { error?: string }
+        : {}
+      if (!response.ok) {
+        throw new Error(result.error || 'The intake service is unavailable on this static website. Your details and resume were not saved. Please email spreadittech@gmail.com or call 331 643 5771.')
+      }
       setSaved(true)
     } catch (error) {
-      setSaveError(error instanceof Error ? error.message : 'We could not save your details. Please try again.')
+      setSaveError(error instanceof TypeError
+        ? 'The intake service is unavailable on this static website. Your details and resume were not saved. Please email spreadittech@gmail.com or call 331 643 5771.'
+        : error instanceof Error ? error.message : 'We could not save your details. Please try again.')
     } finally {
       setSaving(false)
     }
