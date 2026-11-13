@@ -99,11 +99,11 @@ app.post('/api/intake', intakeLimiter, upload.single('resume'), async (request, 
   const notes = readField(request.body?.notes, 2000)
   const resume = request.file
 
-  if (!name || !phone || !isValidEmail(email) || !location || !status || !role || !resume) {
-    response.status(400).json({ error: 'Complete all required fields and attach a valid resume.' })
+  if (!name || !phone || !isValidEmail(email) || !location || !status || !role) {
+    response.status(400).json({ error: 'Complete all required candidate details.' })
     return
   }
-  if (resume.size > maxResumeBytes) {
+  if (resume && resume.size > maxResumeBytes) {
     response.status(400).json({ error: 'Resume files must be 10 MB or smaller.' })
     return
   }
@@ -112,17 +112,19 @@ app.post('/api/intake', intakeLimiter, upload.single('resume'), async (request, 
     return
   }
 
-  const extension = resume.originalname.toLowerCase().match(/\.(pdf|doc|docx)$/)?.[0]
-  if (!extension) {
+  const extension = resume?.originalname.toLowerCase().match(/\.(pdf|doc|docx)$/)?.[0]
+  if (resume && !extension) {
     response.status(400).json({ error: 'Choose a PDF, DOC, or DOCX resume.' })
     return
   }
 
   let savedResumePath = ''
   try {
-    const resumeName = await saveResume(name, location, role, extension, resume.buffer)
-    savedResumePath = join(resumesDirectory, resumeName)
-    const relativeResumePath = `src/resumes/${resumeName}`
+    const resumeName = resume && extension
+      ? await saveResume(name, location, role, extension, resume.buffer)
+      : ''
+    if (resumeName) savedResumePath = join(resumesDirectory, resumeName)
+    const relativeResumePath = resumeName ? `src/resumes/${resumeName}` : ''
     await appendCandidate({
       submittedAt: new Date().toISOString(),
       name,
@@ -136,7 +138,7 @@ app.post('/api/intake', intakeLimiter, upload.single('resume'), async (request, 
       resumePath: relativeResumePath,
     })
 
-    response.status(201).json({ ok: true, resumeName, resumePath: relativeResumePath })
+    response.status(201).json({ ok: true, resumeName: resumeName || null, resumePath: relativeResumePath || null })
   } catch (error) {
     if (savedResumePath) await unlink(savedResumePath).catch(() => undefined)
     console.error('Candidate intake could not be saved.', error)

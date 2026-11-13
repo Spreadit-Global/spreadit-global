@@ -22,9 +22,9 @@ The primary visual system and responsive layout rules live in `src/site.css`; re
 
 ## Candidate intake storage
 
-The form collects name, phone, email, current location, experience/status, target role, optional notes, and a resume. Date of birth is not collected. After consent and submission, the Express API stores all entered details in the single worksheet in `src/data/candidates.xlsx` and saves the matching resume under `src/resumes/`.
+The form collects name, phone, email, current location, experience/status, target role, optional notes, and an optional resume. Date of birth is not collected. After consent and submission, the Express API stores all entered details in the single worksheet in `src/data/candidates.xlsx` and saves a resume under `src/resumes/` only when one is provided.
 
-Resume names use `name-location-role.ext`; for example, `alex-candidate-dallas-tx-software-engineer.pdf`. If a filename already exists, a numeric suffix is added to avoid overwriting the earlier resume. Each workbook row includes the resume filename and relative path. The workbook is created with one `Candidates` worksheet when the server starts, and Vite ignores both storage directories to avoid reloads when files are added.
+Resume names use `name-location-role.ext`; for example, `alex-candidate-dallas-tx-software-engineer.pdf`. If a filename already exists, a numeric suffix is added to avoid overwriting the earlier resume. Workbook resume filename/path cells are left blank when no resume is provided. The workbook is created with one `Candidates` worksheet when the server starts, and Vite ignores both storage directories to avoid reloads when files are added.
 
 Candidate data and resumes are excluded from Git by `.gitignore`. Keep the local folders backed up securely and restrict access because they contain personal information. Local filesystem storage is suitable only when the server runs on persistent storage; ephemeral hosting may delete these files when an instance is replaced. Calendly opens after a successful save and receives the supported `name` and `email` URL parameters.
 
