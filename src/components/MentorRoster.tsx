@@ -1,3 +1,4 @@
+import { googleFormUrl } from '../intake'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, BadgeCheck, Code2, MessageSquareText, Network } from 'lucide-react'
 
@@ -16,7 +17,7 @@ export function MentorRoster() {
           <h2>Learn from the<br />people <em>in the room.</em></h2>
           <p>Active senior engineers bring the context you can’t get from another course: how teams make decisions, design systems, and evaluate candidates.</p>
           <div className="mentor-proof-points"><span><Code2 size={16}/> Real engineering practice</span><span><Network size={16}/> System design, together</span><span><MessageSquareText size={16}/> Honest interview feedback</span></div>
-          <a className="text-link" href="#assessment">Find your fit <ArrowUpRight size={15}/></a>
+          <a className="text-link" href={googleFormUrl}>Find your fit <ArrowUpRight size={15}/></a>
         </motion.div>
         <div className="mentor-roster">
           <div className="roster-top"><span>MENTOR NETWORK</span><span>SELECT SPECIALTIES <i>↘</i></span></div>

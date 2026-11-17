@@ -9,7 +9,7 @@ const stages = [
   { title: 'Offer signed', team: 'Your next chapter', date: 'THE MILESTONE', icon: CircleCheck, detail: 'Move into a role that matches your goals, with your team beside you.' },
 ]
 
-export function Hero({ onStart }: { onStart: () => void }) {
+export function Hero({ formUrl }: { formUrl: string }) {
   const [activeStage, setActiveStage] = useState(0)
   const selected = stages[activeStage]
   const SelectedIcon = selected.icon
@@ -23,7 +23,7 @@ export function Hero({ onStart }: { onStart: () => void }) {
           <h1>Build the career<br />you <em>came here for.</em></h1>
           <p className="hero-lede">Tier-1 engineering mentorship. A dedicated team behind your profile. Visa support that sees the whole picture.</p>
           <div className="hero-actions">
-            <button className="button button-gold" onClick={onStart}>Start your journey <ArrowRight size={16} /></button>
+            <a className="button button-gold" href={formUrl}>Start your journey <ArrowRight size={16} /></a>
             <a className="button button-quiet" href="#engines">Explore candidate pipeline <ArrowDownRight size={16} /></a>
           </div>
           <div className="hero-proof">

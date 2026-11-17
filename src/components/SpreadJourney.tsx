@@ -1,3 +1,4 @@
+import { googleFormUrl } from '../intake'
 import { useState } from 'react'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { ArrowRight, BriefcaseBusiness, CheckCircle2, GraduationCap, Laptop2, Megaphone, Shield, TrendingUp } from 'lucide-react'
@@ -45,7 +46,7 @@ export function SpreadJourney() {
                 <div className="phase-panel-top"><div className={`phase-icon phase-${active.color}`}><ActiveIcon size={20} /></div><div><span className="card-kicker">PHASE 0{activeIndex + 1} / 06</span><h3>{active.name}<span>.</span></h3></div><span className={`phase-watermark phase-${active.color}`}>{active.letter}</span></div>
                 <p className="phase-summary">{active.summary}</p>
                 <div className="phase-content-grid"><div><span className="content-label">WHAT YOU GET</span><ul className="deliverable-list">{active.deliverables.map((item) => <li key={item}><CheckCircle2 size={15} />{item}</li>)}</ul></div><div className="phase-outcome"><span className="content-label">YOUR SPECIALIST TEAM</span><strong>{active.team}</strong><span className="outcome-rule" /><span className="content-label">EXPECTED MILESTONE</span><strong>{active.milestone}</strong></div></div>
-                <a className="text-link" href="#assessment">See your roadmap <ArrowRight size={15} /></a>
+                <a className="text-link" href={googleFormUrl}>See your roadmap <ArrowRight size={15} /></a>
               </motion.div>
             </AnimatePresence>
           </div>

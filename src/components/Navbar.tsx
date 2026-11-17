@@ -9,7 +9,7 @@ const links = [
   { label: 'About us', href: '#about' },
 ]
 
-export function Navbar({ onStart }: { onStart: () => void }) {
+export function Navbar({ formUrl }: { formUrl: string }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
@@ -24,13 +24,13 @@ export function Navbar({ onStart }: { onStart: () => void }) {
           {links.map((link) => (
             <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
           ))}
-          <button className="nav-mobile-cta" onClick={() => { closeMenu(); onStart() }}>
+          <a className="nav-mobile-cta" href={formUrl} onClick={closeMenu}>
             Book a strategy call <ArrowUpRight size={15} />
-          </button>
+          </a>
         </nav>
-        <button className="nav-cta" onClick={onStart}>
+        <a className="nav-cta" href={formUrl}>
           <span>Book a strategy call</span><ArrowUpRight size={15} />
-        </button>
+        </a>
         <button className="menu-toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>

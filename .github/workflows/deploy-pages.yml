@@ -33,6 +33,7 @@ jobs:
         run: npm run build
         env:
           VITE_CALENDLY_URL: https://calendly.com/spreadittech/30min
+          VITE_GOOGLE_FORM_URL: https://forms.gle/hbQazpkqBAuVyLaP7
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { ConsultationForm } from './components/ConsultationForm'
 import { AboutUs } from './components/AboutUs'
 import { CoreEnginesBento } from './components/CoreEnginesBento'
@@ -7,6 +6,7 @@ import { Hero } from './components/Hero'
 import { MentorRoster } from './components/MentorRoster'
 import { Navbar } from './components/Navbar'
 import { SpreadJourney } from './components/SpreadJourney'
+import { googleFormUrl } from './intake'
 import './site.css'
 import './hero-tweaks.css'
 import './responsive.css'
@@ -17,21 +17,18 @@ import './storage-intake.css'
 import './brand-polish.css'
 
 function App() {
-  const [assessmentOpen, setAssessmentOpen] = useState(false)
-
   return (
     <>
-      <Navbar onStart={() => setAssessmentOpen(true)} />
+      <Navbar formUrl={googleFormUrl} />
       <main>
-        <Hero onStart={() => setAssessmentOpen(true)} />
+        <Hero formUrl={googleFormUrl} />
         <SpreadJourney />
         <CoreEnginesBento />
         <MentorRoster />
         <AboutUs />
-        <ConsultationForm />
+        <ConsultationForm formUrl={googleFormUrl} />
       </main>
       <Footer />
-      {assessmentOpen && <ConsultationForm modal onClose={() => setAssessmentOpen(false)} />}
     </>
   )
 }

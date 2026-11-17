@@ -6,12 +6,4 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS === 'true' ? '/spreadit-global/' : '/',
   plugins: [react(), tailwindcss()],
-  server: {
-    proxy: {
-      '/api': 'http://127.0.0.1:8787',
-    },
-    watch: {
-      ignored: ['**/src/data/**', '**/src/resumes/**'],
-    },
-  },
 })
