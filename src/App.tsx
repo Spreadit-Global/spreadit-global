@@ -14,6 +14,7 @@ import './about-intake.css'
 import './contact-fields.css'
 import './brand-theme.css'
 import './storage-intake.css'
+import './brand-polish.css'
 
 function App() {
   const [assessmentOpen, setAssessmentOpen] = useState(false)

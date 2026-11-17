@@ -20,18 +20,16 @@ Open the local URL printed by Vite. Create a production build with `npm run buil
 
 The primary visual system and responsive layout rules live in `src/site.css`; reusable page sections are in `src/components/`.
 
-## Candidate intake storage
+## Candidate intake integration
 
-The form collects name, phone, email, current location, experience/status, target role, optional notes, and an optional resume. Date of birth is not collected. After consent and submission, the Express API stores all entered details in the single worksheet in `src/data/candidates.xlsx` and saves a resume under `src/resumes/` only when one is provided.
+The form collects name, phone, email, current location, experience/status, target role, years of experience, optional notes, and an optional resume. Date of birth is not collected. Local file/workbook persistence has been removed. Until Google Sheets and Drive are configured, submissions are rejected with a clear message and no candidate information is saved. Do not put candidate data, credentials, or service-account keys in GitHub.
 
-Resume names use `name-location-role.ext`; for example, `alex-candidate-dallas-tx-software-engineer.pdf`. If a filename already exists, a numeric suffix is added to avoid overwriting the earlier resume. Workbook resume filename/path cells are left blank when no resume is provided. The workbook is created with one `Candidates` worksheet when the server starts, and Vite ignores both storage directories to avoid reloads when files are added.
+Once connected, the intended resume name is `name-location-job-title-years-of-experience.ext` (for example, `nachiketh_joshi-dallas-software_engineer-4.pdf`). Calendly receives the candidate name and email after the external submission succeeds.
 
-Candidate data and resumes are excluded from Git by `.gitignore`. Keep the local folders backed up securely and restrict access because they contain personal information. Local filesystem storage is suitable only when the server runs on persistent storage; ephemeral hosting may delete these files when an instance is replaced. Calendly opens after a successful save and receives the supported `name` and `email` URL parameters.
-
-The API accepts PDF/DOC/DOCX resumes up to 10 MB, applies per-IP rate limiting, sanitizes filenames, serializes workbook writes, and removes a saved resume if its workbook row cannot be written.
+To configure the external integration, provide the Google Sheet URL and Drive folder URL, and confirm the sheet tab name (default: `Candidates`). The Sheet and Drive folder must be shared with a Google service account as an editor. The service-account email can be shared here so you can grant access; keep its JSON private key out of chat and Git, and configure it as a secret file/environment credential on the backend host. The hosting platform must run the Express API and securely store credentials and uploaded resumes.
 
 ## GitHub Pages
 
 The workflow in `.github/workflows/deploy-pages.yml` builds and deploys the site whenever changes are pushed to `main`. The project Pages URL is `https://spreadit-global.github.io/spreadit-global/`. In repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The production build uses `/spreadit-global/` as its base path so JavaScript, CSS, and image assets load from the project Pages URL.
 
-GitHub Pages is static hosting and does not run the Express API. The candidate intake therefore cannot save to `src/data/candidates.xlsx` or `src/resumes/` on Pages; it displays a contact fallback instead of claiming the submission was saved. Use a host that runs the Express server with persistent storage to enable resume and workbook submissions.
+GitHub Pages is static hosting and does not run the Express API. The candidate intake therefore cannot submit to Google Sheets or upload resumes to Drive from this deployment until a secure backend/API integration is configured. The page displays an error instead of claiming a submission was saved. Use a host that runs the Express server and configure the Google integration there.
