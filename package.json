@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "test:admin": "node --test tests/admin-dashboard.test.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -7,6 +7,7 @@ const links = [
   { label: 'Mentorship', href: '#mentorship' },
   { label: 'Visa & Marketing', href: '#engines' },
   { label: 'About us', href: '#about' },
+  { label: 'Dashboard', href: '#dashboard' },
 ]
 
 export function Navbar({ formUrl }: { formUrl: string }) {

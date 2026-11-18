@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard | SPREAD GLOBAL</title>
+  <style>
+    :root{font-family:Arial,Helvetica,sans-serif;color:#162842;background:#f2f5fa;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}button,a,select{cursor:pointer}button:disabled,select:disabled{cursor:wait;opacity:.55}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #b87500;outline-offset:3px}button{border:1px solid #cbd5e1;border-radius:7px;background:#fff;color:#17345b;padding:10px 14px;font-weight:600}button:hover:not(:disabled){background:#eef3fa}.gold{background:#f2ac32;border-color:#f2ac32;color:#102743}.gold:hover:not(:disabled){background:#ffc460}.muted{color:#53657b}.topbar{background:#0e284d;color:#fff;padding:22px 4vw;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:.13em;font-size:16px}.brand span{color:#f2ac32}.topbar small{display:block;margin-top:5px;color:#c3d2e5}.account{display:flex;align-items:center;gap:15px;flex-wrap:wrap;font-size:13px}.topbar a{color:#fff}.shell{max-width:1440px;margin:auto;padding:38px 4vw 60px}.heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.13em;color:#53657b;text-transform:uppercase}h1{font-size:34px;font-weight:600;letter-spacing:-1px;margin:9px 0}h2{margin:0;font-size:23px}.heading p{margin:0;color:#53657b;line-height:1.6}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}.metric{background:#fff;border:1px solid #dde4ed;border-radius:12px;padding:22px}.metric strong{display:block;font-size:30px;margin:12px 0 4px}.metric span{font-size:12px;color:#53657b}.metric:last-child{background:#0e284d;color:#fff}.metric:last-child span{color:#c3d2e5}.workspace{background:#fff;border:1px solid #dde4ed;border-radius:12px;overflow:hidden}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:20px;border-bottom:1px solid #dde4ed}.toolbar label{font-size:12px;font-weight:600;display:grid;gap:7px}.search{flex:1;min-width:200px}.toolbar input,.toolbar select{border:1px solid #bac7d6;border-radius:6px;padding:11px;background:#fff;color:#162842}.toolbar .star-filter{display:flex;align-items:center;gap:8px;padding-top:22px}.star-filter input{width:17px;height:17px;accent-color:#9b6500}.results-line{padding:14px 20px;color:#53657b;font-size:12px;border-bottom:1px solid #edf0f5}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:13px;min-width:850px}th{background:#f8fafc;padding:15px 18px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#53657b}td{padding:16px 18px;border-top:1px solid #edf0f5;vertical-align:middle}td small{display:block;margin-top:5px;color:#53657b;font-size:12px}td .name{font-weight:700;color:#16365e;overflow-wrap:anywhere}td select{max-width:190px;padding:9px 6px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#17345b;font-size:12px}.row-actions{display:flex;gap:6px}.row-actions button{padding:8px 11px;font-size:12px}.star{font-size:23px;padding:3px 8px;color:#596a7e;background:transparent;border-color:transparent}.star[aria-pressed=true]{color:#916000}.danger{color:#a62323;border-color:#e8baba}.danger:hover:not(:disabled){background:#fff1f1}.empty{padding:65px 25px;text-align:center;color:#53657b}.empty h2{color:#17345b;margin-bottom:12px}.pagination{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-top:1px solid #dde4ed;gap:12px;font-size:12px}.pagination>div{display:flex;gap:8px}.notice{padding:14px 18px;border-radius:7px;margin-bottom:18px;line-height:1.6;font-size:14px;background:#fff7df;border:1px solid #dfbc60;color:#60420a}.error{background:#fff1f1;border-color:#d6a5a5;color:#8c2020}.success{background:#edf8f2;border-color:#9cc7af;color:#215c3b}[hidden]{display:none!important}dialog{width:min(740px,calc(100% - 32px));max-height:88vh;border:1px solid #b5c2d2;border-radius:14px;padding:0;color:#162842;box-shadow:0 25px 100px #07183155}dialog::backdrop{background:#071831aa}.dialog-head{position:sticky;top:0;background:#0e284d;color:white;padding:24px;display:flex;align-items:center;justify-content:space-between;gap:15px}.dialog-head p{font-size:12px;color:#c3d2e5;margin:8px 0 0}.dialog-body{padding:24px}.detail-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:22px}.detail-actions select{padding:10px;border:1px solid #bac7d6;border-radius:7px;background:white;color:#17345b}.details{margin:0}.details>div{padding:14px 0;border-bottom:1px solid #e0e7ef}.details dt{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#53657b;margin-bottom:7px}.details dd{margin:0;line-height:1.65;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.details a{color:#2459a0}.details small{font-size:12px}.confirmation{padding:28px}.confirmation p{line-height:1.75;color:#53657b}.confirmation>div{display:flex;justify-content:flex-end;gap:10px;margin-top:25px}.locked{max-width:520px;margin:15vh auto;text-align:center;padding:35px}.locked p{line-height:1.7;color:#53657b}.footer{font-size:12px;color:#53657b;margin-top:20px;line-height:1.7}@media(max-width:750px){.metrics{grid-template-columns:repeat(2,1fr);gap:10px}.metric{padding:17px}.shell{padding-top:25px}.topbar{align-items:flex-start;flex-direction:column;gap:14px}.heading{align-items:flex-start}.heading h1{font-size:28px}.toolbar{padding:16px}.toolbar label:not(.star-filter){flex:1}.dialog-head,.dialog-body{padding:18px}.heading p{font-size:13px}}
+  </style>
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <div><div class="brand">SPREAD <span>GLOBAL</span></div><small>Candidate management</small></div>
+    <div class="account"><span id="admin-email">Checking admin access…</span><a href="https://spreadglobal.us/" rel="noreferrer">Website ↗</a><button id="lock" type="button">Lock dashboard</button></div>
+  </header>
+  <main class="shell" id="app" aria-busy="true">
+    <div class="heading"><div><span class="eyebrow">Your hiring workspace</span><h1>Dashboard</h1><p>Every application. Every next step.</p></div><button id="refresh" type="button">Refresh</button></div>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <div class="metrics" aria-label="Application summary">
+      <div class="metric"><span>ALL APPLICANTS</span><strong id="metric-total">—</strong><span>Across your pipeline</span></div>
+      <div class="metric"><span>IN PROGRESS</span><strong id="metric-progress">—</strong><span>Working toward their next role</span></div>
+      <div class="metric"><span>STARRED</span><strong id="metric-starred">—</strong><span>People on your radar</span></div>
+      <div class="metric"><span>PLACED</span><strong id="metric-placed">—</strong><span>The next chapter, started</span></div>
+    </div>
+    <section class="workspace" aria-label="Applicants">
+      <div class="toolbar">
+        <label class="search">Search applicants<input id="search" type="search" placeholder="Name, email, role, or any response…" autocomplete="off"></label>
+        <label>Process stage<select id="stage-filter"><option value="">All stages</option></select></label>
+        <label class="star-filter"><input id="star-filter" type="checkbox">Starred only</label>
+      </div>
+      <div class="results-line" id="results" aria-live="polite">Loading applications…</div>
+      <div class="table-scroll" id="table-wrap" hidden>
+        <table><caption hidden>Applicants with progress and management actions</caption><thead><tr><th scope="col">Star</th><th scope="col">Applicant</th><th scope="col">Target role</th><th scope="col">Location</th><th scope="col">Process stage</th><th scope="col">Actions</th></tr></thead><tbody id="rows"></tbody></table>
+      </div>
+      <div id="empty" class="empty" hidden></div>
+      <div class="pagination"><span id="page-info"></span><div><button id="prev" type="button">← Previous</button><button id="next" type="button">Next →</button></div></div>
+    </section>
+    <p class="footer">Original form answers stay in Google Sheets. Removing an applicant from this dashboard preserves their form response and resume.</p>
+  </main>
+  <section id="locked" class="locked" hidden><h1>Dashboard locked</h1><p>Application details have been cleared from this page. Your Google account remains signed in. Close this tab or unlock to continue.</p><p id="locked-error" role="alert" hidden></p><button id="unlock" class="gold" type="button">Unlock dashboard</button></section>
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-head"><div><h2 id="detail-title">Application details</h2><p id="detail-email"></p></div><button id="close-details" type="button" aria-label="Close application details">Close</button></div>
+    <div class="dialog-body"><div id="detail-actions" class="detail-actions"></div><dl id="details" class="details"></dl></div>
+  </dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-title"><div class="confirmation"><h2 id="delete-title">Remove applicant?</h2><p id="delete-description"></p><div><button id="cancel-delete" type="button">Cancel</button><button id="confirm-delete" class="danger" type="button">Remove from dashboard</button></div></div></dialog>
+  <script>
+    'use strict';
+    const state = { applicants: [], stages: [], page: 1, pageSize: 20, busy: false, loaded: false, selectedId: null, deleteId: null, locked: false };
+    const $ = (id) => document.getElementById(id);
+    function element(tag, text, className) {
+      const node = document.createElement(tag);
+      if (text !== undefined) node.textContent = text;
+      if (className) node.className = className;
+      return node;
+    }
+    function field(person, title) {
+      return person.fields.find((item) => item.label.trim().toLowerCase() === title.toLowerCase())?.value || '';
+    }
+    function nameOf(person) { return field(person, 'Full name') || field(person, 'Email address') || 'Unnamed applicant'; }
+    function message(text, kind) {
+      $('notice').textContent = text;
+      $('notice').className = 'notice' + (kind ? ' ' + kind : '');
+      $('notice').hidden = !text;
+      $('notice').setAttribute('role', kind === 'error' ? 'alert' : 'status');
+    }
+    function setBusy(value) {
+      state.busy = value;
+      $('app').setAttribute('aria-busy', String(value));
+      for (const button of document.querySelectorAll('#app button,#app select,#detail-dialog button,#detail-dialog select,#delete-dialog button,#lock')) button.disabled = value;
+      $('unlock').disabled = value;
+      if (!value) updatePagination();
+    }
+    function rpc(method, payload) {
+      return new Promise((resolve, reject) => {
+        const runner = google.script.run.withSuccessHandler(resolve).withFailureHandler(reject);
+        if (method === 'getApplicants') runner.getApplicants();
+        else if (method === 'updateApplicant') runner.updateApplicant(payload);
+        else if (method === 'deleteApplicant') runner.deleteApplicant(payload);
+        else reject(new Error('Unknown dashboard action.'));
+      });
+    }
+    function filtered() {
+      const query = $('search').value.trim().toLowerCase();
+      return state.applicants.filter((person) =>
+        (!$('stage-filter').value || person.stage === $('stage-filter').value)
+        && (!$('star-filter').checked || person.starred)
+        && (!query || person.fields.some((item) => item.value.toLowerCase().includes(query))));
+    }
+    function updatePagination() {
+      const count = filtered().length;
+      const pages = Math.max(1, Math.ceil(count / state.pageSize));
+      state.page = Math.min(state.page, pages);
+      $('prev').disabled = state.busy || state.page === 1;
+      $('next').disabled = state.busy || state.page >= pages;
+      $('page-info').textContent = 'Page ' + state.page + ' of ' + pages;
+    }
+    function starButton(person) {
+      const button = element('button', person.starred ? '★' : '☆', 'star');
+      button.type = 'button';
+      button.setAttribute('aria-label', (person.starred ? 'Unstar ' : 'Star ') + nameOf(person));
+      button.setAttribute('aria-pressed', String(person.starred));
+      button.disabled = state.busy;
+      button.onclick = () => change(person.id, { starred: !person.starred });
+      return button;
+    }
+    function stageSelect(person) {
+      const select = element('select');
+      select.setAttribute('aria-label', 'Process stage for ' + nameOf(person));
+      for (const stage of state.stages) {
+        const option = element('option', stage); option.value = stage; select.append(option);
+      }
+      select.value = person.stage;
+      select.disabled = state.busy;
+      select.onchange = () => change(person.id, { stage: select.value });
+      return select;
+    }
+    function render() {
+      const people = filtered();
+      const placed = state.applicants.filter((person) => person.stage === 'Placed').length;
+      $('metric-total').textContent = state.applicants.length;
+      $('metric-placed').textContent = placed;
+      $('metric-progress').textContent = state.applicants.filter((person) => !['Placed', 'On hold', 'New application'].includes(person.stage)).length;
+      $('metric-starred').textContent = state.applicants.filter((person) => person.starred).length;
+      updatePagination();
+      $('results').textContent = people.length + ' of ' + state.applicants.length + ' applicants';
+      $('rows').replaceChildren();
+      $('table-wrap').hidden = people.length === 0;
+      $('empty').hidden = people.length > 0;
+      if (!people.length) {
+        $('empty').replaceChildren(element('h2', state.applicants.length ? 'No matches found' : 'No applications yet'), element('p', state.applicants.length ? 'Try another search or clear your filters.' : 'Google Form responses will appear here. Use Refresh to check for new applications.'));
+      }
+      for (const person of people.slice((state.page - 1) * state.pageSize, state.page * state.pageSize)) {
+        const row = element('tr');
+        const star = element('td'); star.append(starButton(person));
+        const applicant = element('td'); applicant.append(element('div', nameOf(person), 'name'), element('small', field(person, 'Email address')));
+        const role = element('td', field(person, 'Target role') || '—');
+        const location = element('td', field(person, 'Current location') || '—');
+        const stage = element('td'); stage.append(stageSelect(person));
+        const actions = element('td'); const buttons = element('div', undefined, 'row-actions');
+        const view = element('button', 'View'); view.type = 'button'; view.disabled = state.busy;
+        view.setAttribute('aria-label', 'View ' + nameOf(person));
+        view.onclick = () => { state.selectedId = person.id; renderDetails(); $('detail-dialog').showModal(); };
+        const remove = element('button', 'Remove', 'danger'); remove.type = 'button'; remove.disabled = state.busy;
+        remove.setAttribute('aria-label', 'Remove ' + nameOf(person)); remove.onclick = () => confirmRemoval(person.id);
+        buttons.append(view, remove); actions.append(buttons); row.append(star, applicant, role, location, stage, actions); $('rows').append(row);
+      }
+      if (state.selectedId) renderDetails();
+    }
+    function appendValue(container, value) {
+      // User-supplied answers are text. Only HTTPS URLs get clickable links.
+      const parts = value.split(/(https:\/\/[^\s,<>"']+)/g);
+      for (const part of parts) {
+        if (part.startsWith('https://')) {
+          try {
+            const url = new URL(part);
+            if (url.protocol === 'https:' && !url.username && !url.password) {
+              const link = element('a', part); link.href = url.href; link.target = '_blank'; link.rel = 'noopener noreferrer'; container.append(link); continue;
+            }
+          } catch (error) { /* Render invalid URLs as plain text. */ }
+        }
+        container.append(document.createTextNode(part));
+      }
+    }
+    function renderDetails() {
+      const person = state.applicants.find((item) => item.id === state.selectedId);
+      if (!person) { $('detail-dialog').close(); state.selectedId = null; return; }
+      $('detail-title').textContent = nameOf(person);
+      $('detail-email').textContent = field(person, 'Email address');
+      const actions = $('detail-actions'); actions.replaceChildren(starButton(person), stageSelect(person));
+      if (person.stage !== 'Placed') {
+        const placed = element('button', 'Mark placed', 'gold'); placed.type = 'button'; placed.disabled = state.busy;
+        placed.onclick = () => change(person.id, { stage: 'Placed' }); actions.append(placed);
+      }
+      const remove = element('button', 'Remove applicant', 'danger'); remove.type = 'button'; remove.disabled = state.busy;
+      remove.onclick = () => confirmRemoval(person.id); actions.append(remove);
+      const details = $('details'); details.replaceChildren();
+      for (const item of person.fields) {
+        const group = element('div'); const value = element('dd');
+        appendValue(value, item.value || 'Not provided'); group.append(element('dt', item.label), value); details.append(group);
+      }
+      if (person.updatedAt) {
+        const group = element('div'); group.append(element('dt', 'Last admin update'), element('dd', new Date(person.updatedAt).toLocaleString() + ' · ' + person.updatedBy)); details.append(group);
+      }
+    }
+    async function load() {
+      if (state.busy) return;
+      setBusy(true); message('Loading applications…'); $('locked-error').hidden = true;
+      try {
+        const data = await rpc('getApplicants');
+        state.applicants = data.applicants; state.stages = data.stages; state.loaded = true; state.locked = false;
+        $('admin-email').textContent = data.email;
+        const previous = $('stage-filter').value;
+        $('stage-filter').replaceChildren(element('option', 'All stages')); $('stage-filter').firstChild.value = '';
+        for (const stage of data.stages) { const option = element('option', stage); option.value = stage; $('stage-filter').append(option); }
+        $('stage-filter').value = previous;
+        $('topbar').hidden = false; $('app').hidden = false; $('locked').hidden = true;
+        render(); message('');
+      } catch (error) {
+        message(error.message || 'Unable to load applications. Check your account access and try again.', 'error');
+        if (state.locked) { $('locked-error').textContent = 'Unable to unlock. Check your account access and try again.'; $('locked-error').hidden = false; }
+        if (!state.loaded) { $('results').textContent = 'Applications could not be loaded'; $('empty').hidden = false; $('empty').replaceChildren(element('h2', 'Unable to load applications'), element('p', 'Use Refresh to retry. If this continues, contact your administrator.')); }
+      } finally { setBusy(false); }
+    }
+    async function change(id, patch) {
+      if (state.busy) return;
+      const person = state.applicants.find((item) => item.id === id);
+      if (!person) return;
+      setBusy(true); message('Saving…');
+      try {
+        const result = await rpc('updateApplicant', { id, version: person.version, ...patch });
+        Object.assign(person, result); message('Application updated.', 'success');
+      } catch (error) { message(error.message || 'Unable to save. Refresh and try again.', 'error'); }
+      finally { setBusy(false); render(); }
+    }
+    function confirmRemoval(id) {
+      state.deleteId = id;
+      const person = state.applicants.find((item) => item.id === id);
+      $('delete-description').textContent = 'Remove ' + nameOf(person) + ' from the dashboard? Their original Google Form response and resume will be kept. An administrator can restore their dashboard record from the management sheet.';
+      $('delete-dialog').showModal();
+    }
+    async function removeApplicant() {
+      if (state.busy) return;
+      const person = state.applicants.find((item) => item.id === state.deleteId);
+      if (!person) return;
+      setBusy(true); message('Removing applicant…');
+      try {
+        await rpc('deleteApplicant', { id: person.id, version: person.version });
+        state.applicants = state.applicants.filter((item) => item.id !== person.id);
+        message('Applicant removed from the dashboard.', 'success');
+      } catch (error) { message(error.message || 'Unable to remove applicant. Refresh and try again.', 'error'); }
+      finally { $('delete-dialog').close(); state.deleteId = null; setBusy(false); render(); }
+    }
+    function lock() {
+      if (state.busy) return;
+      state.applicants = []; state.selectedId = null; state.deleteId = null; state.loaded = false; state.locked = true;
+      $('detail-dialog').close(); $('delete-dialog').close();
+      $('rows').replaceChildren(); $('details').replaceChildren(); $('detail-actions').replaceChildren();
+      $('detail-title').textContent = ''; $('detail-email').textContent = ''; $('delete-description').textContent = ''; $('admin-email').textContent = '';
+      $('search').value = ''; $('stage-filter').value = ''; $('star-filter').checked = false; state.page = 1;
+      for (const id of ['metric-total', 'metric-progress', 'metric-starred', 'metric-placed', 'results', 'page-info']) $(id).textContent = '';
+      message(''); $('topbar').hidden = true; $('app').hidden = true; $('locked').hidden = false; $('unlock').focus();
+    }
+    $('refresh').onclick = load; $('lock').onclick = lock; $('unlock').onclick = load;
+    for (const id of ['search', 'stage-filter', 'star-filter']) $(id).addEventListener(id === 'search' ? 'input' : 'change', () => { state.page = 1; if (state.loaded) render(); });
+    $('prev').onclick = () => { state.page -= 1; render(); }; $('next').onclick = () => { state.page += 1; render(); };
+    $('close-details').onclick = () => $('detail-dialog').close();
+    $('detail-dialog').addEventListener('close', () => { state.selectedId = null; });
+    $('detail-dialog').addEventListener('cancel', (event) => { if (state.busy) event.preventDefault(); });
+    $('delete-dialog').addEventListener('cancel', (event) => { if (state.busy) event.preventDefault(); });
+    $('cancel-delete').onclick = () => { state.deleteId = null; $('delete-dialog').close(); };
+    $('confirm-delete').onclick = removeApplicant;
+    load();
+  </script>
+</body>
+</html>

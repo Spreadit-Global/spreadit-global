@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { AdminAccess } from './components/AdminAccess'
 import { ConsultationForm } from './components/ConsultationForm'
 import { AboutUs } from './components/AboutUs'
 import { CoreEnginesBento } from './components/CoreEnginesBento'
@@ -15,18 +17,38 @@ import './contact-fields.css'
 import './brand-theme.css'
 import './storage-intake.css'
 import './brand-polish.css'
+import './admin-access.css'
 
 function App() {
+  const [dashboardOpen, setDashboardOpen] = useState(window.location.hash === '#dashboard')
+  useEffect(() => {
+    const updateRoute = () => {
+      const isDashboard = window.location.hash === '#dashboard'
+      setDashboardOpen(isDashboard)
+      if (isDashboard) window.scrollTo(0, 0)
+    }
+    window.addEventListener('hashchange', updateRoute)
+    return () => window.removeEventListener('hashchange', updateRoute)
+  }, [])
+
+  useEffect(() => {
+    if (dashboardOpen) return
+    const target = window.location.hash.slice(1)
+    if (target) document.getElementById(target)?.scrollIntoView()
+  }, [dashboardOpen])
+
   return (
     <>
       <Navbar formUrl={googleFormUrl} />
       <main>
-        <Hero formUrl={googleFormUrl} />
-        <SpreadJourney />
-        <CoreEnginesBento />
-        <MentorRoster />
-        <AboutUs />
-        <ConsultationForm formUrl={googleFormUrl} />
+        {dashboardOpen ? <AdminAccess /> : <>
+          <Hero formUrl={googleFormUrl} />
+          <SpreadJourney />
+          <CoreEnginesBento />
+          <MentorRoster />
+          <AboutUs />
+          <ConsultationForm formUrl={googleFormUrl} />
+        </>}
       </main>
       <Footer />
     </>
